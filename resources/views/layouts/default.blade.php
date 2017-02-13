@@ -8,7 +8,7 @@
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <div class="col-md-offset-1 col-md-10">
-          <a href="/" id="logo">Sample App</a>
+          <a href="/" id="logo">ERP Suppliers</a>
           <nav>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="{{ route('help') }}">Help</a></li>
@@ -21,7 +21,10 @@
     </header>
 
     <div class="container">
+      <div class="col-md-offset-1 col-md-10">
+        @include('shared.messages')
       @yield('content')
+
     </div>
   </body>
 </html>

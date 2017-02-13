@@ -14,7 +14,7 @@ class CreateSuppliersTable extends Migration
     public function up()
     {
         Schema::create('suppliers', function (Blueprint $table) {
-            $table->increments('sid');
+            $table->increments('id');
             $table->string('name');
             $table->string('contactNum');
             $table->string('email')->unique();
