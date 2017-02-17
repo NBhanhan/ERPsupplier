@@ -36,14 +36,7 @@
           <label for="note">Note:</label>
           <input type="text" name="note" class="form-control" value="{{ old('note')}}">
         </div>
-        <div class="form-group">
-          <label for="record">Record:</label>
-          <input type="text" name="record" class="form-control" value="{{ old('record')}}">
-        </div>
-        <div class="form-group">
-          <label for="totalSpend">Total Spend:</label>
-          <input type="text" name="totalSpend" class="form-control" value="{{ old('totalSpend')}}">
-        </div>
+
 
         <button type="submit" class="btn btn-primary">SUBMIT</button>
       </form>

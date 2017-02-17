@@ -17,8 +17,6 @@ Route::get('/', function () {
 Route::get('/home', 'StaticPagesController@home')->name('home');
 Route::get('/help', 'StaticPagesController@help')->name('help');
 Route::get('/about', 'StaticPagesController@about')->name('about');
-//get('signup','SuppliersController@create')->name('signup');
-//resource('suppliers','SuppliersController');
 Route::get('/signup', 'SuppliersController@create')->name('signup');
 Route::resource('suppliers','SuppliersController');
 //Route::get('/suppliers','SuppliersController@index')->name('suppliers.index');

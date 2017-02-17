@@ -11,9 +11,9 @@
           <a href="/" id="logo">ERP Suppliers</a>
           <nav>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="{{ route('help') }}">Help</a></li>
-              <li><a href="{{ route('about') }}">About</a></li>
-              <li><a href="#">Login</a></li>
+              <li><a href="{{ route('help') }}"> Help </a></li>
+              <li><a href="{{ route('about') }}"> About </a></li>
+
             </ul>
           </nav>
         </div>
@@ -21,8 +21,8 @@
     </header>
 
     <div class="container">
-      <div class="col-md-offset-1 col-md-10">
-        @include('shared.messages')
+
+      @include('shared.messages')
       @yield('content')
 
     </div>
