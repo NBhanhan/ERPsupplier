@@ -10,10 +10,6 @@
     <div class="panel-body">
       @include('shared.errors')
 
-
-
-
-
       <form method="POST" action="{{ route('suppliers.store') }}">
         {{ csrf_field() }}
         <div class="form-group">
