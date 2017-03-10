@@ -15,26 +15,26 @@ class SuppliersController extends Controller
       return $suppliers;
     }
 
-    public function show($id)
+    public function show($id,$start,$end)
     {
 
         $supplier = Supplier::findOrFail($id);
         $totalSpend = new Supplier();
-        return [$supplier,$totalSpend->findTotalSpend($id)];
+        return [$supplier,$totalSpend->findTotalSpend($id,$start,$end)];
     }
 
     public function search(Request $request)
     {
         $suppliers = new Supplier();
-        return $suppliers->searchSupplier($request);
+        return $suppliers->searchModel($request);
     }
 
-    public function create()
-    {
-        return view('suppliers.create');
-    }
+    // public function create()
+    // {
+    //     return view('suppliers.create');
+    // }
 
-    public function store(Request $request)
+    public function create(Request $request)
     {
         $this->validate($request, [
             'name'=>'required|max:50|alpha_dash',
@@ -45,16 +45,16 @@ class SuppliersController extends Controller
         ]);
         $supplier= new Supplier();
         session()->flash('success','welcome!');
-        return redirect()->route('suppliers.show',[$supplier->storeSupplier($request)]);
+        return redirect()->route('suppliers.show',[$supplier->storeModel($request)]);
     }
 
-    public function edit($id)
-    {
-        $supplier = Supplier::findOrFail($id);
-        return view('suppliers.edit',compact('supplier'));
-    }
+    // public function edit($id)
+    // {
+    //     $supplier = Supplier::findOrFail($id);
+    //     return view('suppliers.edit',compact('supplier'));
+    // }
 
-    public function update($id, Request $request)
+    public function edit($id, Request $request)
     {
         $this->validate($request, [
             'name'=>'required|max:50|alpha_dash',
@@ -64,19 +64,17 @@ class SuppliersController extends Controller
             'note'=>'required',
         ]);
         $supplier= new Supplier();
-        $supplier->updateSupplier($id,$request);
+        $supplier->updateModel($id,$request);
         session()->flash('success','Update Successful!');
         return redirect()->route('suppliers.show',[$id]);
     }
 
-
     public function destroy($id)
     {
         $supplier= new Supplier();
-        $supplier->destroySupplier($id);
+        $supplier->destroyModel($id);
         session()->flash('success','Delete successful!');
         return back();
-
     }
 
 }

@@ -18,30 +18,30 @@ class Supplier extends Authenticatable
         'id','name','contactNum','email','address','note'
     ];
 
-    public function findTotalSpend($id)
+    public static function findTotalSpend($id,$start,$end)
     {
         $totalSpend=Item::where('supplierId',$id)
-        ->whereBetween('created_at',[date('2017-02-13 05:41:42'),date('2017-02-20 11:03:53')])
+        ->whereBetween('created_at',[date($start),date($end)])
         ->sum('price');
         return $totalSpend;
         //->sum('price');
     }
-    public function searchSupplier($request)
+    public static function searchModel($request)
     {
         $suppliers = Supplier::where('name',$request->name)->get();
         return $suppliers;
     }
-    public function storeSupplier($request)
+    public static function storeModel($request)
     {
-        $supplier=Supplier::create($request->all());
+        $supplier=Supplier::create($request);
         return $supplier;
     }
-    public function updateSupplier($id,$request)
+    public static function updateModel($id,$request)
     {
-        $supplier=Supplier::findorFail($id)->update($request->all());
+        $supplier=Supplier::findorFail($id)->update($request);
         return $supplier;
     }
-    public function destroySupplier($id)
+    public static function destroyModel($id)
     {
         $supplier=Supplier::findOrFail($id);
         $supplier->delete();
